@@ -1,0 +1,63 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="@attr/LocationButtonStyle">@style/LocationButtonStyle</item>
+        <item name="@attr/GenericButtonStyle">@style/GenericButtonStyle</item>
+        <item name="@attr/TitleTextViewStyle">@style/TitleTextViewStyle</item>
+        <item name="@attr/GenericTextViewStyle">@style/GenericTextViewStyle</item>
+        <item name="@attr/GenericTextViewStyleBorderless">@style/GenericTextViewStyleBorderless</item>
+    </style>
+
+    <!-- Buttons -->
+
+    <style name="LocationButtonStyle" parent="android:style/Widget.Button">
+        <item name="android:minHeight">48dp</item>
+        <item name="android:layout_margin">8dp</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:fontFamily">monospace</item>
+        <item name="android:background">@drawable/border</item>
+    </style>
+
+    <style name="GenericButtonStyle" parent="android:style/Widget.Button">
+        <item name="android:minHeight">48dp</item>
+        <item name="android:layout_margin">16dp</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:fontFamily">monospace</item>
+        <item name="android:background">@drawable/border</item>
+    </style>
+
+    <!-- TextViews -->
+
+    <style name="TitleTextViewStyle" parent="android:style/Widget.TextView">
+        <item name="android:layout_margin">16dp</item>
+        <item name="android:textSize">64sp</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:fontFamily">monospace</item>
+    </style>
+
+    <style name="GenericTextViewStyle" parent="android:style/Widget.TextView">
+        <item name="android:layout_margin">8dp</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:fontFamily">monospace</item>
+        <item name="android:background">@drawable/border</item>
+    </style>
+
+    <style name="GenericTextViewStyleBorderless" parent="android:style/Widget.TextView">
+        <item name="android:layout_margin">8dp</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:fontFamily">monospace</item>
+    </style>
+
+</resources>

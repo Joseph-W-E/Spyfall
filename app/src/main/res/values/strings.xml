@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">Spyfall</string>
+
+    <!-- Shared Preferences Code Names -->
+    <string name="shared_preferences_code_name">code</string>
+    <string name="shared_preferences_player_number_name">playerNumber</string>
+
+    <!-- Error messages -->
+    <string name="error_data_not_found">Oops! I messed up :( Could you try that again?</string>
+    <string name="error_bad_data">Looks like you entered invalid data.</string>
+
+    <!-- Home Screen -->
+    <string name="generate_a_new_code_hint">Generate a new code or Join a game</string>
+    <string name="generate_a_new_code">Generate A New Code</string>
+    <string name="join_game">Join Game</string>
+
+    <!-- Dialogs -->
+    <string name="dialog_generate_code_directions">How many players are there, including you?</string>
+    <string name="dialog_join_game_code">Please enter a code:</string>
+    <string name="dialog_join_game_code_hint">e.x. abc1def2</string>
+    <string name="dialog_join_game_player_number">Please enter a player number:</string>
+    <string name="dialog_join_game_player_number_hint">e.x. 2</string>
+    <string name="dialog_join_game_use_recent_code">Use Recent Code</string>
+    <string name="dialog_accept">OK</string>
+    <string name="dialog_cancel">CANCEL</string>
+
+    <!-- PreGame -->
+    <string name="pregame_start">Start!</string>
+
+    <!-- InGame -->
+    <string name="ingame_timer_start">00:00</string>
+    <string name="ingame_spy">You\'re the SPY!</string>
+    <string name="ingame_show_hide">show/hide</string>
+    <string name="ingame_times_up">Time\'s up! Vote on who the spy is!</string>
+
+</resources>

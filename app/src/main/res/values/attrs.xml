@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="LocationButtonStyle"  format="reference" />
+
+    <attr name="GenericButtonStyle"   format="reference" />
+
+    <attr name="TitleTextViewStyle"   format="reference" />
+
+    <attr name="GenericTextViewStyle" format="reference" />
+
+    <attr name="GenericTextViewStyleBorderless" format="reference" />
+
+</resources>
