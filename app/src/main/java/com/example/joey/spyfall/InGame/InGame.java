@@ -2,14 +2,13 @@ package com.example.joey.spyfall.InGame;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.preference.PreferenceManager;
-import android.util.Log;
-import android.util.TypedValue;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,7 +17,7 @@ import com.example.joey.spyfall.R;
 import com.example.joey.spyfall.Spyfall.Location;
 import com.example.joey.spyfall.Spyfall.PlayerInformation;
 import com.example.joey.spyfall.Spyfall.Spyfall;
-import com.example.joey.spyfall.ViewUtility.LocationButton;
+import com.example.joey.spyfall.ViewUtility.ToggleButton;
 import com.example.joey.spyfall.ViewUtility.RoleTextView;
 
 import java.io.IOException;
@@ -37,6 +36,10 @@ public class InGame extends Activity {
 
     private boolean informationHidden = false;
 
+    private String code;
+
+    private int playerNumber;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,8 +49,8 @@ public class InGame extends Activity {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
         /*** Use shared [references to get player information ***/
-        String code = prefs.getString(getString(R.string.shared_preferences_code_name), getString(R.string.error_data_not_found));
-        int playerNumber = prefs.getInt(getString(R.string.shared_preferences_player_number_name), -1);
+        code = prefs.getString(getString(R.string.shared_preferences_code_name), getString(R.string.error_data_not_found));
+        playerNumber = prefs.getInt(getString(R.string.shared_preferences_player_number_name), -1);
         playerInformation = Spyfall.getPlayerInformation(code, playerNumber, this);
 
         /*** Verify that the information is right ***/
@@ -82,7 +85,17 @@ public class InGame extends Activity {
             }
         }.start();
 
+        /*** Setup the "Leave Game" button ***/
+        final Button btnLeaveGame = (Button) findViewById(R.id.ingame_btn_leave_game);
+        btnLeaveGame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
         /*** Enable hide information feature and locations feature ***/
+        initializePlayers();
         initializeHideFeature();
         initializeLocations();
     }
@@ -146,6 +159,42 @@ public class InGame extends Activity {
     }
 
     /**
+     * Creates a tangible list of buttons at the top of the screen so users can cross off
+     * players (just like they can with locations, see initializeLocations).
+     */
+    private void initializePlayers() {
+        int totalNumberOfPlayers = Spyfall.getTotalNumberOfPlayersFromCode(code);
+
+        // Get the parent (linear layout)
+        LinearLayout parent = (LinearLayout) findViewById(R.id.ingame_ll_players);
+        List<ToggleButton> buffer = new ArrayList<>();
+
+        for (int i = 1; i <= totalNumberOfPlayers; i++) {
+            if (buffer.size() < 2) {
+                ToggleButton button = makeToggleButton("Player " + i);
+                if (i == playerNumber)
+                    button.setBackgroundColor(ContextCompat.getColor(this, R.color.colorPrimary));
+                buffer.add(button);
+            } else {
+                LinearLayout child = makeChildLinearLayout();
+                for (ToggleButton tb : buffer)
+                    child.addView(tb);
+                buffer.clear();
+                parent.addView(child);
+                i--;
+            }
+        }
+
+        if (!buffer.isEmpty()) {
+            LinearLayout child = makeChildLinearLayout();
+            for (ToggleButton tb : buffer)
+                child.addView(tb);
+            buffer.clear();
+            parent.addView(child);
+        }
+    }
+
+    /**
      * Gets the list of locations from the Spyfall class, and for each location,
      * a button is added to a linear layout. These buttons can be "enabled" and "disabled".
      */
@@ -158,17 +207,17 @@ public class InGame extends Activity {
             e.printStackTrace();
         }
 
-        // Get the parent (the scroll view)
+        // Get the parent (linear layout)
         LinearLayout parent = (LinearLayout) findViewById(R.id.ingame_ll_locations);
-        List<LocationButton> buffer = new ArrayList<>();
+        List<ToggleButton> buffer = new ArrayList<>();
 
         for (int i = 0; i < locations.size(); i++) {
             if (buffer.size() < 2) {
-                buffer.add(makeLocationButton(locations.get(i).getLocation()));
+                buffer.add(makeToggleButton(locations.get(i).getLocation()));
             } else {
                 LinearLayout child = makeChildLinearLayout();
-                for (LocationButton lb : buffer)
-                    child.addView(lb);
+                for (ToggleButton tb : buffer)
+                    child.addView(tb);
                 buffer.clear();
                 parent.addView(child);
                 i--;
@@ -177,7 +226,7 @@ public class InGame extends Activity {
 
         if (!buffer.isEmpty()) {
             LinearLayout child = makeChildLinearLayout();
-            for (LocationButton lb : buffer)
+            for (ToggleButton lb : buffer)
                 child.addView(lb);
             buffer.clear();
             parent.addView(child);
@@ -202,8 +251,8 @@ public class InGame extends Activity {
         return child;
     }
 
-    private LocationButton makeLocationButton(String text) {
-        LocationButton button = new LocationButton(this);
+    private ToggleButton makeToggleButton(String text) {
+        ToggleButton button = new ToggleButton(this);
         button.setText(text);
         return button;
     }

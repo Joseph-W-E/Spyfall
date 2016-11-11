@@ -33,6 +33,27 @@
 
     </LinearLayout>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ingame_label_players"
+        style="@style/GenericTextViewStyleBorderless"/>
+
+    <LinearLayout
+        android:id="@+id/ingame_ll_players"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center_horizontal">
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ingame_label_locations"
+        style="@style/GenericTextViewStyleBorderless"/>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -46,5 +67,14 @@
             android:gravity="center_horizontal" />
 
     </ScrollView>
+
+    <Button
+        android:id="@+id/ingame_btn_leave_game"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/ingame_leave_game"
+        android:padding="8dp"
+        style="@style/GenericButtonStyle"/>
 
 </LinearLayout>

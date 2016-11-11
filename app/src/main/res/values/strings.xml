@@ -32,5 +32,8 @@
     <string name="ingame_spy">You\'re the SPY!</string>
     <string name="ingame_show_hide">show/hide</string>
     <string name="ingame_times_up">Time\'s up! Vote on who the spy is!</string>
+    <string name="ingame_leave_game">Leave Game</string>
+    <string name="ingame_label_players">Player Reference</string>
+    <string name="ingame_label_locations">Location Reference</string>
 
 </resources>

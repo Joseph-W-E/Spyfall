@@ -13,20 +13,20 @@ import com.example.joey.spyfall.R;
  * Created by Joey on 09-Nov-16.
  */
 
-public class LocationButton extends Button {
+public class ToggleButton extends Button {
 
     private boolean enabled = true;
 
     private final int paintFlags;
 
-    public LocationButton(Context context) {
+    public ToggleButton(Context context) {
         super(context, null, R.attr.LocationButtonStyle);
         paintFlags = getPaintFlags();
         setupAttributes();
         setupOnClickListener();
     }
 
-    public LocationButton(Context context, AttributeSet attrs) {
+    public ToggleButton(Context context, AttributeSet attrs) {
         super(context, attrs, R.attr.LocationButtonStyle);
         paintFlags = getPaintFlags();
         setupAttributes();
