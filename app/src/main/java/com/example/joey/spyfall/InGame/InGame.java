@@ -6,6 +6,7 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
@@ -161,15 +162,16 @@ public class InGame extends Activity {
         LinearLayout parent = (LinearLayout) findViewById(R.id.ingame_ll_locations);
         List<LocationButton> buffer = new ArrayList<>();
 
-        for (Location l : locations) {
+        for (int i = 0; i < locations.size(); i++) {
             if (buffer.size() < 2) {
-                buffer.add(makeLocationButton(l.getLocation()));
+                buffer.add(makeLocationButton(locations.get(i).getLocation()));
             } else {
                 LinearLayout child = makeChildLinearLayout();
                 for (LocationButton lb : buffer)
                     child.addView(lb);
                 buffer.clear();
                 parent.addView(child);
+                i--;
             }
         }
 
