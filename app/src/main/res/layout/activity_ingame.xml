@@ -1,63 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/ingame_timer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/ingame_timer_start"
-        style="@style/GenericTextViewStyleBorderless" />
-
     <LinearLayout
-        android:id="@+id/ingame_ll_player_information"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:padding="16dp"
         android:orientation="vertical"
-        android:background="@drawable/border">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/ingame_txt_hide_or_show_information"
+            android:id="@+id/ingame_timer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/ingame_show_hide"
-            android:layout_gravity="end"
-            style="@style/GenericTextViewStyleBorderless"
-            android:padding="0dp"
-            android:layout_margin="0dp"/>
+            android:layout_gravity="center_horizontal"
+            android:text="@string/ingame_timer_start"
+            style="@style/GenericTextViewStyleBorderless" />
 
-    </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ingame_ll_player_information"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:padding="16dp"
+            android:orientation="vertical"
+            android:background="@drawable/border">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/ingame_label_players"
-        style="@style/GenericTextViewStyleBorderless"/>
+            <TextView
+                android:id="@+id/ingame_txt_hide_or_show_information"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ingame_show_hide"
+                android:layout_gravity="end"
+                style="@style/GenericTextViewStyleBorderless"
+                android:padding="0dp"
+                android:layout_margin="0dp" />
 
-    <LinearLayout
-        android:id="@+id/ingame_ll_players"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_gravity="center_horizontal">
+        </LinearLayout>
 
-    </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ingame_label_players"
+            style="@style/GenericTextViewStyleBorderless"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/ingame_label_locations"
-        style="@style/GenericTextViewStyleBorderless"/>
+        <LinearLayout
+            android:id="@+id/ingame_ll_players"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal" />
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ingame_label_locations"
+            style="@style/GenericTextViewStyleBorderless" />
 
         <LinearLayout
             android:id="@+id/ingame_ll_locations"
@@ -66,15 +63,15 @@
             android:orientation="vertical"
             android:gravity="center_horizontal" />
 
-    </ScrollView>
+        <Button
+            android:id="@+id/ingame_btn_leave_game"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/ingame_leave_game"
+            android:padding="8dp"
+            style="@style/GenericButtonStyle" />
 
-    <Button
-        android:id="@+id/ingame_btn_leave_game"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/ingame_leave_game"
-        android:padding="8dp"
-        style="@style/GenericButtonStyle"/>
+    </LinearLayout>
 
-</LinearLayout>
+</ScrollView>

@@ -164,6 +164,7 @@ public class InGame extends Activity {
      */
     private void initializePlayers() {
         int totalNumberOfPlayers = Spyfall.getTotalNumberOfPlayersFromCode(code);
+        int firstPlayer = Spyfall.getFirstPlayerFromCode(code);
 
         // Get the parent (linear layout)
         LinearLayout parent = (LinearLayout) findViewById(R.id.ingame_ll_players);
@@ -171,9 +172,17 @@ public class InGame extends Activity {
 
         for (int i = 1; i <= totalNumberOfPlayers; i++) {
             if (buffer.size() < 2) {
-                ToggleButton button = makeToggleButton("Player " + i);
-                if (i == playerNumber)
-                    button.setBackgroundColor(ContextCompat.getColor(this, R.color.colorPrimary));
+                ToggleButton button = makeToggleButton(String.format(Locale.ENGLISH, "Player %d", i));
+                if (i == playerNumber) {
+                    String text = button.getText().toString();
+                    text = text.concat(" (you)");
+                    button.setText(text);
+                }
+                if (i == firstPlayer) {
+                    String text = button.getText().toString();
+                    text = text.concat(" ***");
+                    button.setText(text);
+                }
                 buffer.add(button);
             } else {
                 LinearLayout child = makeChildLinearLayout();

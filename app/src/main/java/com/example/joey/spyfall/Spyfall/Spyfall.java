@@ -147,6 +147,20 @@ public class Spyfall {
     }
 
     /**
+     * Returns the player number of the first player.
+     * @param code The code to extract the first player from.
+     * @return The player who should go first.
+     */
+    public static int getFirstPlayerFromCode(String code) {
+        code = filter(code);
+        int totalNumberOfPlayers = getTotalNumberOfPlayersFromCode(code);
+        int sum = 0;
+        for (char c : code.toCharArray())
+            sum += convertCharacterToInt(c);
+        return sum % totalNumberOfPlayers + 1;
+    }
+
+    /**
      * Determines if the code and playerNumber are valid.
      * @param code The code entered by the user.
      * @param playerNumber The player number entered by the user.
